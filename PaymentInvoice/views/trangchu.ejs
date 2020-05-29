@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trang Chủ Công Nghệ Mới</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/mmenu.css">
+    <link href="css/mmenu.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- Nếu có thông báo trên -->
+    <% if (alert.length > 0) { %>
+    <script type="text/javascript">
+        window.addEventListener('load', function () {
+            swal({
+                title: "Thông Báo",
+                text: "<%= alert%>",
+            });
+        });
+    </script>
+    <% } %>
+
+    <!-- header -->
+    <% include header %>
+
+    <!-- contain -->
+    <section class="home-payment">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 payment-title">
+                    <% include headerBody %>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 payment-content">
+                    <div class="col-md-2 hidden-sm hidden-xs content-left">
+                        <% include content-body-left%>
+                    </div>
+                    <div class="col-md-7 col-sm-12 col-xs-12 content-center" id="content-center">
+                        <%-body%>
+                    </div>
+                    <div class="col-md-3 hidden-sm hidden-xs content-right">
+                        <div class="content-right-div">
+                            <% include content-body-right%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <% include footer %>
+
+    <!-- jQuery -->
+    <!-- <script src="js/jquery.js"></script> -->
+    <script src="js/mmenu.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-3.4.0.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script>
+        Mmenu.configs.offCanvas.page.selector = "#my-page";
+
+        document.addEventListener(
+            "DOMContentLoaded", () => {
+                new Mmenu("#my-menu", {
+                    dividers: {
+                        addTo: "#my-contacts",
+                        fixed: true
+                    },
+                });
+            }
+        );
+    </script>
+    <script>
+        $(".title-center").hover(function () {
+            $(this).stop(true, false).animate({ padding: "10px" });
+        }, function () {
+            $(this).stop(true, false).animate({ padding: "0" });
+        });
+    </script>
+    <script src="js/swiper.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 5,
+            spaceBetween: 1,
+            freeMode: true,
+            direction: 'vertical',
+            autoplay: {
+                delay: 1800,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            cssMode: true,
+            loop: true,
+        });
+    </script>
+    <script>
+        $('#myModalLS,#myModalLSHD').on('show.bs.modal', function (e) {
+            var button = $(e.relatedTarget)
+            var date = button.data('date'),
+                loaigd = button.data('loaigd'),
+                ptnap = button.data('ptnap'),
+                sodt = button.data('sodt'),
+                diachi = button.data('diachi'),
+                phigd = button.data('phigd'),
+                mahd = button.data('mahd'),
+                tendn = button.data('tendn'),
+                diachidn = button.data('diachidn'),
+                makh = button.data('makh'),
+                tenkh = button.data('tenkh'),
+                sotien = button.data('sotien')
+            var modal = $(this)
+            modal.find('#date').text(date);
+            modal.find('#loaigd').text(loaigd);
+            modal.find('#ptnap').text(ptnap);
+            modal.find('#sodt').text(sodt);
+            modal.find('#diachi').text(diachi);
+            modal.find('#phigd').text(phigd);
+            modal.find('#mahd').text(mahd);
+            modal.find('#tendn').text(tendn);
+            modal.find('#diachidn').text(diachidn);
+            modal.find('#makh').text(makh);
+            modal.find('#tenkh').text(tenkh);
+            modal.find('#sotien').text(sotien);
+        });
+    </script>
+</body>
+
+</html>

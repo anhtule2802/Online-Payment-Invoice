@@ -1,0 +1,175 @@
+[
+    {
+        "maHD": "DIEN_0000001",
+        "loaiHD": 1,
+        "hoadonThang": "2019-9",
+        "hanthanhtoan": "2019-10-01",
+        "trangthai": false,
+        "thue": 0.1,
+        "chisocu": 120,
+        "chisomoi": 330,
+        "giatien": 1300,
+        "maDN": 1,
+        "maKH": "4000001",
+        "doanhnghiep": {
+            "tenDN": "Công ty điện lực thành phố Hồ Chí Minh",
+            "loaiDN": 1,
+            "sodt": "0383838383",
+            "diachiDN": "quận Bình Thạnh",
+            "url": "images/logo-dientphcm.png"
+        },
+        "khachhang": {
+            "tenKH": "Lê Anh Tú",
+            "sodt": "0123456789",
+            "diachi": "Quận 9"
+        }
+    },
+    {
+        "maHD": "DIEN_0000003",
+        "loaiHD": 1,
+        "hoadonThang": "2019-10",
+        "hanthanhtoan": "2019-11-01",
+        "trangthai": false,
+        "thue": 0.1,
+        "chisocu": 120,
+        "chisomoi": 330,
+        "giatien": 1300,
+        "maDN": 1,
+        "maKH": "4000001",
+        "doanhnghiep": {
+            "tenDN": "Công ty điện lực thành phố Hồ Chí Minh",
+            "loaiDN": 1,
+            "sodt": "0383838383",
+            "diachiDN": "quận Bình Thạnh",
+            "url": "images/logo-dientphcm.png"
+        },
+        "khachhang": {
+            "tenKH": "Lê Anh Tú",
+            "sodt": "0123456789",
+            "diachi": "Quận 9"
+        }
+    },
+    {
+        "maHD": "DIEN_0000010",
+        "loaiHD": 1,
+        "hoadonThang": "2019-08",
+        "hanthanhtoan": "2019-09-01",
+        "trangthai": false,
+        "thue": 0.1,
+        "chisocu": 120,
+        "chisomoi": 330,
+        "giatien": 1300,
+        "maDN": 1,
+        "maKH": "4000001",
+        "doanhnghiep": {
+            "tenDN": "Công ty điện lực thành phố Hồ Chí Minh",
+            "loaiDN": 1,
+            "sodt": "0383838383",
+            "diachiDN": "quận Bình Thạnh",
+            "url": "images/logo-dientphcm.png"
+        },
+        "khachhang": {
+            "tenKH": "Lê Anh Tú",
+            "sodt": "0123456789",
+            "diachi": "Quận 9"
+        }
+    },
+    {
+        "maHD": "DIEN_0000002",
+        "loaiHD": 1,
+        "hoadonThang": "2019-10",
+        "hanthanhtoan": "2019-11-01",
+        "trangthai": false,
+        "thue": 0.1,
+        "chisocu": 120,
+        "chisomoi": 330,
+        "giatien": 1300,
+        "maDN": 2,
+        "maKH": "4000002",
+        "doanhnghiep": {
+            "tenDN": "Công ty điện lực SPC",
+            "loaiDN": 1,
+            "sodt": "0488888888",
+            "diachiDN": "quận Tân Phú",
+            "url": "images/logo-dienspc.jpg"
+        },
+        "khachhang": {
+            "tenKH": "Lê Tuấn Anh",
+            "sodt": "0124657893",
+            "diachi": "Quận 9"
+        }
+    },
+    {
+        "maHD": "NUOC_0000001",
+        "loaiHD": 2,
+        "hoadonThang": "2019-10",
+        "hanthanhtoan": "2019-11-01",
+        "trangthai": false,
+        "thue": 0.1,
+        "chisocu": 120,
+        "chisomoi": 330,
+        "giatien": 1200,
+        "maDN": 4,
+        "maKH": "4000003",
+        "doanhnghiep": {
+            "tenDN": "Công ty cung cấp nước Bến Thành",
+            "loaiDN": 2,
+            "sodt": "0483838384",
+            "diachiDN": "quận Bình Thạnh",
+            "url": "images/logo-cnbenthanh.png"
+        },
+        "khachhang": {
+            "tenKH": "Lê Anh Hùng",
+            "sodt": "0852963741",
+            "diachi": "Quận 9"
+        }
+    },
+    {
+        "maHD": "INTERNET_0000001",
+        "loaiHD": 3,
+        "hoadonThang": "2019-10",
+        "hanthanhtoan": "2019-11-01",
+        "trangthai": false,
+        "thue": 0.1,
+        "tengoicuoc": "VNPT 4G / 1 tháng",
+        "giatien": 120000,
+        "maDN": 6,
+        "maKH": "4000001",
+        "doanhnghiep": {
+            "tenDN": "Công ty FPT thành phố Hồ Chí Minh",
+            "loaiDN": 3,
+            "sodt": "0583858385",
+            "diachiDN": "quận Bình Thạnh",
+            "url": "images/logo-fpt.png"
+        },
+        "khachhang": {
+            "tenKH": "Lê Anh Tú",
+            "sodt": "0123456789",
+            "diachi": "Quận 9"
+        }
+    },
+    {
+        "maHD": "INTERNET_0000002",
+        "loaiHD": 3,
+        "hoadonThang": "2019-10",
+        "hanthanhtoan": "2019-11-01",
+        "trangthai": false,
+        "thue": 0.1,
+        "tengoicuoc": "VNPT 4G / 1 tháng",
+        "giatien": 120000,
+        "maDN": 6,
+        "maKH": "4000003",
+        "doanhnghiep": {
+            "tenDN": "Công ty FPT thành phố Hồ Chí Minh",
+            "loaiDN": 3,
+            "sodt": "0583858385",
+            "diachiDN": "quận Bình Thạnh",
+            "url": "images/logo-fpt.png"
+        },
+        "khachhang": {
+            "tenKH": "Lê Phi Hùng",
+            "sodt": "0123456789",
+            "diachi": "Quận 9"
+        }
+    }
+]

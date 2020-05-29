@@ -1,0 +1,58 @@
+<style>
+  table {
+    border-collapse: collapse;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: gray;
+    color: white;
+  }
+</style>
+<div id="custom-search-input">
+  <div class="input-group col-md-12">
+    <form method="GET" action="/admin-qlkh">
+      <input type="search" name="search" id="input" class="search-query form-control" value="" title=""
+        placeholder="Từ khóa tìm kiếm" style="width: 50%;margin-top: 25px;margin-left: 210px;margin-bottom:10px;">
+      <span class="action-search">
+        <button class="btn-search" type="submit">
+          <i class="fa fa-search" style="font-size:20px!important; position: absolute;right: 210px;top: 25px;"></i>
+        </button>
+      </span>
+    </form>
+    <div class="scrollable">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Tên</th>
+            <th>Mã HV</th>
+            <th>Số dư</th>
+            <th>Số điện thoại</th>
+            <th>Địa chỉ</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%for(let i = 0; i < data.Items.length; i++){%>
+          <%if(data.Items[i].loaiTK == 1){%>
+          <tr>
+            <td><%=data.Items[i].hoivien.tenHV%></td>
+            <td><%=data.Items[i].maHV%></td>
+            <td><%=data.Items[i].sodu%> VND</td>
+            <td><%=data.Items[i].hoivien.sodt%></td>
+            <td><%=data.Items[i].hoivien.diachi%></td>
+            <td><%=data.Items[i].email%></td>
+          </tr>
+          <%}%>
+                  <%}%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

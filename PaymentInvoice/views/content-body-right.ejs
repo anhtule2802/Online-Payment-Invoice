@@ -1,0 +1,69 @@
+<% if (user == null) {%>
+<div class="card">
+    <div class="card-body">
+        <br>
+        <span title="">Đăng Nhập</span>
+        <hr>
+        <% if (message.length > 0) { %>
+            <p class="text-success text-center" style="color: red;"> <%= message %> </p>
+        <% } %>
+        <form class="form-login" action="/login" method="POST">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" placeholder="Email" type="text" name="username">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" placeholder="Mật Khẩu" type="password" name="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="login-group form-inline">
+                    <input class="form-control" type="submit" value="Login" style="width: 50%;"></input>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<%} else {%>
+    <%if(user.loaiTK == 1){%>
+        <div class="content-right-div">
+            <div class="card">
+                <div class="card-body">
+                    <br>
+                        <span> Số dư : <%= user.sodu %> VNĐ </span>
+                    <hr>
+                        <a class="nguoidung" href="/thanhtoan">Thanh Toán Hóa Đơn</a>
+                    <hr>
+                        <a class="nguoidung" href="/naptien" title="">Nạp Tiền</a>
+                    <hr>
+                        <a class="nguoidung"  href="/lichsu" title="">Lịch sử giao dịch</a>
+                    <hr>
+                        <a class="nguoidung"  href="/datlich" title="">Đặt lịch nhắc</a>
+                    <hr>
+                        <a class="nguoidung"  href="/logout" title="">Đăng Xuất</a>
+                    <hr>
+                </div>
+            </div>		
+        </div>
+    <%}else{%>
+        <div class="content-right-div">
+            <div class="card">
+                <div class="card-body">
+                    <br>
+                        <span> Số dư : <%= user.sodu %> VNĐ </span>
+                    <hr>
+                        <a class="nguoidung" href="/lichsuthanhtoan">Xem Lịch Sử Thanh Toán</a>
+                    <hr>
+                        <a class="nguoidung" href="/capnhatkhachhang" title="">Cập Nhật Khách Hàng</a>
+                    <hr>
+                        <a class="nguoidung"  href="/capnhathoadon" title="">Cập Nhật Hóa Đơn</a>
+                    <hr>
+                        <a class="nguoidung"  href="/logout" title="">Đăng Xuất</a>
+                    <hr>
+                </div>
+            </div>		
+        </div>
+    <%}%>
+<% } %>

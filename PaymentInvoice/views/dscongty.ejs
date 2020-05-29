@@ -1,0 +1,11 @@
+<div class="content-center-div">
+	<ul style="margin-left:0px!important">
+		<% for (var i = 0; i < items.length; i++) { %>
+			<li>
+				<a href="<%=url%>?loaiHD=<%=loai%>&maDN=<%=items[i].maDN%>" title=""><img
+					src="<%= items[i].doanhnghiep.url %>" style="height: 80px; width: 100px;"
+					alt=""></a>
+			</li>
+		<% } %>
+	</ul>
+</div>

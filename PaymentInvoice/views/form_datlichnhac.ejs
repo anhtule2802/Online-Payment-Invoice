@@ -1,0 +1,187 @@
+
+<script>
+    $(document).ready(function () {
+        $("#yes").click(function () {
+            $("#divKH").fadeIn();
+            $("#loadMaKH").val('FALSE');
+        });
+
+        $("#no").click(function () {
+            $("#divKH").fadeOut();
+            $("#loadMaKH").val('null');
+        });
+    });
+    function checkMaKhachHang() {
+        var ktma = $("#ktMaKH").val();
+        if (ktma === "") {
+            Swal.fire({
+                type: 'info',
+                title: 'Phải chọn mã khách hàng để kiểm tra',
+                text: ''
+            });
+            return false;
+        }
+        return true;
+    }
+    function kiemtraInput() {
+        var date = $("#datngay").val();
+        var time = $("#datgio").val();
+        var maKH = $("#loadMaKH").val();
+
+        if (maKH === "FALSE") {
+            Swal.fire({
+                title: 'Phải kiểm tra mã khách hàng',
+                text: '',
+                type: 'info',
+            });
+            return false;
+        }
+        if (date === "") {
+            Swal.fire({
+                type: 'info',
+                title: 'Phải chọn ngày đặt',
+                text: ''
+            });
+            return false;
+        }
+        if (time === "") {
+            Swal.fire({
+                title: 'Phải cài giờ hẹn',
+                text: '',
+                type: 'info',
+            });
+            return false;
+        }
+        var datenow = new Date();
+        var ngaySS = datenow.getFullYear() + "-" + (datenow.getMonth() + 1) + "-" + datenow.getDate();
+
+        if (ngaySS === date) {
+            var gio = datenow.getHours();
+            var phut = datenow.getMinutes() + 1;
+            if (gio < 10)
+                gio = "0" + gio;
+            if (phut < 10)
+                phut = "0" + phut;
+
+            var gioSS = gio + ":" + phut;
+            if (time < gioSS) {
+                Swal.fire({
+                    title: 'Giờ hẹn hiện phải sau giờ hiện tại',
+                    text: '',
+                    type: 'info',
+                });
+            return false;
+            }
+        }
+        return true;
+    }
+</script>
+<% if (resultUpload === "true") { %>
+<script>
+    window.addEventListener('load', function () {
+        $("#divKH").fadeIn();
+        $("#ktMaKH").val('<%= maKH %>');
+        $("#loadMaKH").val('<%= maKH %>');
+        $("#loadMaDN").val('<%= maDN %>');
+        $("#loadLoaiHD").val('<%= loaiHD %>');
+
+        Swal.fire({
+            type: 'success',
+            title: 'Kiểm tra khách hàng',
+            text: 'Bạn có thể đặt lịch bây giờ'
+        });
+    });
+</script>
+<% } else if (resultUpload === "false") { %>
+<script>
+    window.addEventListener('load', function () {
+        $("#divKH").fadeIn();
+        $("#ktMaKH").val('<%= maKH %>');
+        $("#loadMaKH").val("FALSE");
+        $("#loadMaDN").val('<%= maDN %>');
+        $("#loadLoaiHD").val('<%= loaiHD %>');
+
+        Swal.fire({
+            type: 'info',
+            title: 'Kiểm tra khách hàng',
+            text: 'Xin lỗi. Khách hàng này không có thuộc doanh nghiệp'
+        });
+    });
+</script>
+<% } %>
+
+<div class="content-center-div">
+    <div class="form-group">
+        <label class="col-md-4 control-label" style="margin-top: 65px;margin-left:20px;font-size:15px;">Thanh toán tự
+            động:</label>
+        <div class="col-md-6 input-group">
+            <% if (resultUpload === null) { %>
+            <input id="no" name="gender" type="radio" style="margin-top: 65px;margin-left:-190px" checked /> Không
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="yes" name="gender" type="radio" style="margin-top: 65px;" /> Có
+            <% } else { %>
+            <input id="no" name="gender" type="radio" style="margin-top: 65px;margin-left:-190px" /> Không
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="yes" name="gender" type="radio" style="margin-top: 65px;" checked /> Có
+            <% } %>
+        </div>
+    </div>
+    <div class="form-group" id="divKH" style="border: 1px solid burlywood; height: 115px; display: none;">
+        <label class="col-md-4 control-label" style="margin-top: 17px;margin-left:20px;font-size:15px"> Mã khách hàng:
+        </label>
+        <div class="col-md-6 input-group">
+            <form action="/checkMaKH" method="GET" id="Demo" onsubmit="return checkMaKhachHang()">
+                <input name="loaiHD" type="hidden" value="<%= loaiHD %>" readonly="true;" />
+                <input name="maDN" type="hidden" value="<%= maDN %>" readonly="true;" />
+                <input name="maKH" id="ktMaKH" class="form-control" type="text" style="margin-top: 10px;" />
+                <button id="sub1" class="form-control" value="kiểm tra" style="left:110px;width: 100px;">Kiểm
+                    tra</button>
+            </form>
+        </div>
+    </div>
+
+    <form action="/savelichnhac" method="POST" onsubmit="return kiemtraInput()">
+        <input type="hidden" id="loadMaDN" name="maDN" value="<%= maDN %>" readonly="true;" />
+        <input type="hidden" id="loadLoaiHD" name="loaiHD" value="<%= loaiHD %>" readonly="true;" />
+        <input name="maKH" id="loadMaKH" type="hidden" value="null" readonly="true;" />
+        <div class="form-group">
+            <label class="col-md-4 control-label"
+                style="margin-top: 17px;margin-left:20px;font-size:15px;">Email:</label>
+            <div class="col-md-6 input-group">
+                <input name="email" class="form-control" type="email" value="<%= user.email %>" style="margin-top: 10px"
+                    readonly="true;">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" style="margin-top: 17px;margin-left:20px;font-size:15px">Lịch
+                nhắc*:</label>
+            <div class="col-md-6 input-group">
+                <input name="ngayhen" id="datngay" class="form-control" type="date" min="<%= nowDate %>"
+                    style="margin-top: 10px;">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" style="margin-top: 17px;margin-left:20px;font-size:15px">Giờ
+                hẹn*:</label>
+            <div class="col-md-6 input-group">
+                <input name="giohen" id="datgio" class="form-control" type="time"
+                    style="margin-top: 10px;" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" style="margin-top: 20px;margin-left:20px;font-size:15px">Ghi
+                chú:</label>
+            <div class="col-md-5 input-group">
+                <textarea name="ghichu" class="form-control"
+                    style="margin-top: 10px;height: 100px;width: 315px;"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4"> &nbsp; </label>
+            <div class="login-group form-inline col-md-4 input-group">
+                <input class="form-control" id="sub" type="submit" value="Đặt lịch nhắc"
+                    style="margin-top: 10px;margin-left: 20px;" />
+            </div>
+        </div>
+    </form>
+</div>

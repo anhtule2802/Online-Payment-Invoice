@@ -1,0 +1,111 @@
+<div class="content-center-div">
+    <div class="col-md-12 col-lg-12 xndn-right">
+        <%if(queryHD.loaiHD==3){%>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Hóa Đơn Internet</h2>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mã Khách Hàng</td>
+                    <td><a><strong>: <%=queryHD.maKH%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Họ Tên</td>
+                    <td><a><strong>: <%=queryHD.khachhang.tenKH%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Số Điện Thoại</td>
+                    <td><a><strong>: <%=queryHD.khachhang.sodt%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Địa Chỉ</td>
+                    <td><a><strong>: <%=queryHD.khachhang.diachi%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Tên Công Ty</td>
+                    <td><a><strong>: <%=queryHD.doanhnghiep.tenDN%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Tên Gói Cước</td>
+                    <td><a><strong>: <%=queryHD.tengoicuoc%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Hóa Đơn Tháng</td>
+                    <td><a><strong>: <%=queryHD.hoadonThang%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Số Tiền</td>
+                    <td><a><strong>: <%=total%> VNĐ</strong></a></td>
+                </tr>
+            </tbody>
+        </table>
+        <%}else{%>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <%if(queryHD.loaiHD==1){%>
+                    <th>
+                        <h2>Hóa Đơn Tiền Điện</h2>
+                    </th>
+                    <%}else{%>
+                    <th>
+                        <h2>Hóa Đơn Tiền Nước</h2>
+                    </th>
+                    <%}%>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mã Khách Hàng</td>
+                    <td><a><strong>: <%=queryHD.maKH%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Họ Tên</td>
+                    <td><a><strong>: <%=queryHD.khachhang.tenKH%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Số Điện Thoại</td>
+                    <td><a><strong>: <%=queryHD.khachhang.sodt%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Địa Chỉ</td>
+                    <td><a><strong>: <%=queryHD.khachhang.diachi%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Tên Công Ty</td>
+                    <td><a><strong>: <%=queryHD.doanhnghiep.tenDN%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Chỉ Số Cũ</td>
+                    <td><a><strong>: <%=queryHD.chisocu%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Chỉ Số Mới</td>
+                    <td><a><strong>: <%=queryHD.chisomoi%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Hóa Đơn Tháng</td>
+                    <td><a><strong>: <%=queryHD.hoadonThang%></strong></a></td>
+                </tr>
+                <tr>
+                    <td>Số Tiền</td>
+                    <td><a><strong>: <%=total%> VNĐ</strong></a></td>
+                </tr>
+                </tbody>
+        </table>
+        <%}%>
+
+        </div>
+    <% if(error==""){%>
+        <a href="/xacnhanthanhtoan?maHD=<%=queryHD.maHD%>&loaiHD=<%=queryHD.loaiHD%>&total=<%=total%>&maDN=<%=queryHD.maDN%>"
+            class="btn-xacnhan" style="color:black!important">Xác Nhận Thanh Toán</a>
+        <%}else{%>
+        <a href="/thanhtoan?loaiHD=<%=queryHD.loaiHD%>&maDN=<%=queryHD.maDN%>" class="btn-xacnhan"
+            style="color:black!important">Trở Lại</a>
+        <%}%>
+</div>

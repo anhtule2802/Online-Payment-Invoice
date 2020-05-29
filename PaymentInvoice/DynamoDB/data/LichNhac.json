@@ -1,0 +1,42 @@
+[
+    {
+        "maLich": "10000001",
+        "ngayhen": "2019-10-18",
+        "giohen": 1246,
+        "email": "zzzthanhduy@gmailzzz.com",
+        "taikhoan": {
+            "matKhau": "duy123",
+            "loaiTK": 1,
+            "sodu": 4699700,
+            "maHV": "1000001",
+            "hoivien": {
+                "tenHV": "Thanh Duy",
+                "sodt": "012456789",
+                "diachi": "320 Quang Trung, quận Gò Vấp"
+            }
+        },
+        "maDN": 1,
+        "loaiHD": 1,
+        "ghichu": "thanh toán hóa đơn tiền điện"
+    },
+    {
+        "maLich": "10000002",
+        "ngayhen": "2019-10-18",
+        "giohen": 1246,
+        "email": "zzzthanhduy@gmailzzz.com",
+        "taikhoan": {
+            "matKhau": "duy123",
+            "loaiTK": 1,
+            "sodu": 4699700,
+            "maHV": "1000001",
+            "hoivien": {
+                "tenHV": "Thanh Duy",
+                "sodt": "012456789",
+                "diachi": "320 Quang Trung, quận Gò Vấp"
+            }
+        },
+        "maDN": 4,
+        "loaiHD": 2,
+        "ghichu": "thanh toán hóa đơn tiền nước"
+    }
+]

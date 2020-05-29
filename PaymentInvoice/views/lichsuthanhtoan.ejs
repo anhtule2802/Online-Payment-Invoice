@@ -1,0 +1,33 @@
+<div class="content-center-div">
+  <div id="custom-search-input">
+    <div class="input-group col-md-12">
+      <input type="search" name="" id="input" class="search-query form-control" value="" title=""
+        placeholder="Từ khóa tìm kiếm" style="width: 50%;margin-top: 10px;margin-left: 150px;margin-bottom:10px;">
+      <span class="action-search">
+        <button class="btn-search" type="submit">
+          <i class="fa fa-search" style="font-size:20px!important; position: absolute;right: 170px;top: 10px;"></i>
+        </button>
+      </span>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Ngày</th>
+            <th>Mã Hóa Đơn</th>
+            <th>Mã Khách Hàng</th>
+            <th>Số tiền</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% object.data.Items.forEach((lsgd)=>{%>
+                <tr>
+                    <td><%=lsgd.thoigianGD%> <%=lsgd.ngayGiaoDich%></td>
+                    <td><%=lsgd.hoadon.maHD%></td>
+                    <td><%=lsgd.hoadon.khachhang.maKH%></td>
+                    <td><%=lsgd.soTien%> VNĐ</td>
+                  </tr>
+          <%})%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

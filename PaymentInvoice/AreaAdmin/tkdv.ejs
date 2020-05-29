@@ -1,0 +1,197 @@
+<style>
+        #chartdiv {
+            width: 100%;
+            height: 450px;
+        }
+    
+        #combobox {
+            cursor: pointer;
+            overflow: hidden;
+            background-color: gray;
+            height: 29px;
+            width: 20%;
+            color: #fff;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 5px;
+            box-shadow: 1px 1px 11px #330033;
+        }
+    
+        select:focus {
+            outline: none;
+        }
+    </style>
+    
+    <!-- Resources -->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+    
+    <!-- Chart code -->
+    <script>
+        am4core.ready(function () {
+    
+            // Themes begin
+            am4core.useTheme(am4themes_animated);
+            // Themes end
+    
+            // Create chart instance
+            var chart = am4core.create("chartdiv", am4charts.XYChart);
+    
+            // Add data
+            chart.data = [{
+                "month": "Tháng 1",
+                "soluong": "<%=kh[0]%>",
+                "pareto": "<%=sotien[0]%>"
+            }, {
+                "month": "Tháng 2",
+                "soluong": "<%=kh[1]%>",
+                "pareto": "<%=sotien[1]%>"
+            }, {
+                "month": "Tháng 3",
+                "soluong": "<%=kh[2]%>",
+                "pareto": "<%=sotien[2]%>"
+            }, {
+                "month": "Tháng 4",
+                "soluong": "<%=kh[3]%>",
+                "pareto": "<%=sotien[3]%>"
+            }, {
+                "month": "Tháng 5",
+                "soluong": "<%=kh[4]%>",
+                "pareto": "<%=sotien[4]%>"
+            }, {
+                "month": "Tháng 6",
+                "soluong": "<%=kh[5]%>",
+                "pareto": "<%=sotien[5]%>"
+            }, {
+                "month": "Tháng 7",
+                "soluong": "<%=kh[6]%>",
+                "pareto": "<%=sotien[6]%>"
+            }, {
+                "month": "Tháng 8",
+                "soluong": "<%=kh[7]%>",
+                "pareto": "<%=sotien[7]%>"
+            }, {
+                "month": "Tháng 9",
+                "soluong": "<%=kh[8]%>",
+                "pareto": "<%=sotien[8]%>"
+            }, {
+                "month": "Tháng 10",
+                "soluong": "<%=kh[9]%>",
+                "pareto": "<%=sotien[9]%>"
+            }, {
+                "month": "Tháng 11",
+                "soluong": "<%=kh[10]%>",
+                "pareto": "<%=sotien[10]%>"
+            }, {
+                "month": "Tháng 12",
+                "soluong": "<%=kh[11]%>",
+                "pareto": "<%=sotien[11]%>"
+            }];
+    
+            // Create axes
+            var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+            categoryAxis.dataFields.category = "month";
+            categoryAxis.renderer.grid.template.location = 0;
+            categoryAxis.renderer.minGridDistance = 60;
+            categoryAxis.tooltip.disabled = true;
+    
+            var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+            valueAxis.renderer.minWidth = 50;
+            valueAxis.min = 0;
+            valueAxis.cursorTooltipEnabled = false;
+            valueAxis.title.text = "Số lượng hóa đơn"
+    
+            // Create series
+            var series = chart.series.push(new am4charts.ColumnSeries());
+            series.sequencedInterpolation = true;
+            series.dataFields.valueY = "soluong";
+            series.dataFields.categoryX = "month";
+            series.tooltipText = "Số lượng hóa đơn đã xử lý: [{categoryX}: bold]{valueY}[/]";
+            series.columns.template.strokeWidth = 0;
+    
+            series.tooltip.pointerOrientation = "vertical";
+    
+            series.columns.template.column.cornerRadiusTopLeft = 10;
+            series.columns.template.column.cornerRadiusTopRight = 10;
+            series.columns.template.column.fillOpacity = 0.8;
+    
+            // on hover, make corner radiuses bigger
+            var hoverState = series.columns.template.column.states.create("hover");
+            hoverState.properties.cornerRadiusTopLeft = 0;
+            hoverState.properties.cornerRadiusTopRight = 0;
+            hoverState.properties.fillOpacity = 1;
+    
+            series.columns.template.adapter.add("fill", function (fill, target) {
+                return chart.colors.getIndex(target.dataItem.index);
+            })
+    
+    
+            var paretoValueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+            paretoValueAxis.renderer.opposite = true;
+    
+            paretoValueAxis.strictMinMax = true;
+            paretoValueAxis.renderer.grid.template.disabled = true;
+            paretoValueAxis.numberFormatter = new am4core.NumberFormatter();
+            paretoValueAxis.numberFormatter.numberFormat = "#'VND'"
+            paretoValueAxis.cursorTooltipEnabled = false;
+            paretoValueAxis.title.text = "Lợi nhuận"
+    
+            var paretoSeries = chart.series.push(new am4charts.LineSeries())
+            paretoSeries.dataFields.valueY = "pareto";
+            paretoSeries.dataFields.categoryX = "month";
+            paretoSeries.yAxis = paretoValueAxis;
+            paretoSeries.tooltipText = "Lợi nhuận: {valueY.formatNumber('#.0')}VND[/]";
+            paretoSeries.bullets.push(new am4charts.CircleBullet());
+            paretoSeries.strokeWidth = 2;
+            paretoSeries.stroke = new am4core.InterfaceColorSet().getFor("alternativeBackground");
+            paretoSeries.strokeOpacity = 0.5;
+    
+            // Cursor
+            chart.cursor = new am4charts.XYCursor();
+            chart.cursor.behavior = "panX";
+    
+        }); // end am4core.ready()
+    
+    
+        var title = chart.titles.create();
+        title.text = "Speed";
+        title.fontSize = 25;
+        title.marginBottom = 30;
+    
+        var label = chart.chartContainer.createChild(am4core.Label);
+        label.text = "Km / h";
+        label.align = "center";
+    
+    </script>
+    
+    
+    
+    
+    <!-- HTML -->
+    
+    
+    <form method="post" action="/admin-tkdv" style="padding-top:10px">
+    
+        <a style="font-size: 16px; font-style:oblique;">Năm </a>
+        <select id="combobox" name="combobox" onchange="this.form.submit()"></select>
+    </form>
+    <div id="chartdiv"></div>
+    <a style="font-size: 20px;" id="title">Thống kê số lượng hóa đơn đã xử lý và doanh thu từng tháng trong năm </a><br>
+    <a style="font-size: 17px;" id="dt">- Tổng doanh thu năm </a><br>
+    <a style="font-size: 17px;" id="hd">- Tổng hóa đơn đã xử lý  </a>
+    <script>
+        let nam = "<%=nam%>";
+        var today = new Date();
+        var year = today.getFullYear();
+        var select = document.getElementById("combobox");
+        for (let i = year; i >= 2010; --i) {
+            var option = document.createElement("option");
+            option.text = option.value = i;
+            select.add(option, select.length);
+        }
+        document.getElementById('combobox').value = nam;
+        document.getElementById('title').textContent += nam;
+        document.getElementById('dt').textContent+= (nam +" là: "+"<%=tongdt%>"+" VND");
+        document.getElementById('hd').textContent+= (nam +" là: "+"<%=tonghd%>"+ " hóa đơn");
+    </script>

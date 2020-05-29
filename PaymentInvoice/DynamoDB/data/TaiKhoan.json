@@ -1,0 +1,237 @@
+[
+    {
+        "email": "admin",
+        "matKhau": "admin123",
+        "loaiTK": 3
+    },
+    {
+        "email": "zzzthanhduyzzz@gmail.com",
+        "matKhau": "duy123",
+        "loaiTK": 1,
+        "sodu": 4699700,
+        "maHV": "1000001",
+        "hoivien": {
+            "tenHV": "Thanh Duy",
+            "sodt": "012456789",
+            "diachi": "320 Quang Trung, quận Gò Vấp"
+        }
+    },
+    {
+        "email": "anhtule2802@gmail.com",
+        "matKhau": "123",
+        "loaiTK": 1,
+        "sodu": 0,
+        "maHV": "1000002",
+        "hoivien": {
+            "tenHV": "Lê Anh Tú",
+            "sodt": "0785600625",
+            "diachi": "320 Quang Trung, quận 9"
+        }
+    },
+    {
+        "email": "dienlucHCM@gmail.com",
+        "matKhau": "dienluc123",
+        "loaiTK": 2,
+        "sodu": 0,
+        "maDN": 1,
+        "doanhnghiep": {
+            "tenDN": "Công ty điện lực thành phố Hồ Chí Minh",
+            "loaiDN": 1,
+            "sodt": "0383838383",
+            "diachiDN": "quận Bình Thạnh",
+            "url": "images/logo-dientphcm.png",
+            "dsKhachHang": [
+                {
+                    "maKH": "4000001",
+                    "tenKH": "Lê Anh Tú",
+                    "sodt": "0123456789",
+                    "diachi": "Quận 9"
+                }
+            ]
+        }
+    },
+    {
+        "email": "dienlucSPC@gmail.com",
+        "matKhau": "dienlucSPC123",
+        "loaiTK": 2,
+        "sodu": 0,
+        "maDN": 2,
+        "doanhnghiep": {
+            "tenDN": "Công ty điện lực SPC",
+            "loaiDN": 1,
+            "sodt": "0488888888",
+            "diachiDN": "quận Tân Phú",
+            "url": "images/logo-dienspc.jpg",
+            "dsKhachHang": [
+                {
+                    "maKH": "4000002",
+                    "tenKH": "Lê Tuấn Anh",
+                    "sodt": "0124657893",
+                    "diachi": "Quận 9"
+                }
+            ]
+        }
+    },
+    {
+        "email": "dienlucNPC@gmail.com",
+        "matKhau": "dienlucNPC123",
+        "loaiTK": 2,
+        "sodu": 0,
+        "maDN": 3,
+        "doanhnghiep": {
+            "tenDN": "Công ty điện lực NPC",
+            "loaiDN": 1,
+            "sodt": "0688888888",
+            "diachiDN": "quận Tân Phú",
+            "url": "images/logo-diennpc.jpg",
+            "dsKhachHang": [
+                {
+                    "maKH": "4000003",
+                    "tenKH": "Lê Anh Hùng",
+                    "sodt": "0852963741",
+                    "diachi": "Quận 9"
+                }
+            ]
+        }
+    },
+    {
+        "email": "nuocBenThanh@gmail.com",
+        "matKhau": "benthanh123",
+        "loaiTK": 2,
+        "sodu": 0,
+        "maDN": 4,
+        "doanhnghiep": {
+            "tenDN": "Công ty cung cấp nước Bến Thành",
+            "loaiDN": 2,
+            "sodt": "0483838384",
+            "diachiDN": "quận Bình Thạnh",
+            "url": "images/logo-cnbenthanh.png",
+            "dsKhachHang": [
+                {
+                    "maKH": "4000003",
+                    "tenKH": "Lê Anh Hùng",
+                    "sodt": "0852963741",
+                    "diachi": "Quận 9"
+                },
+                {
+                    "maKH": "4000004",
+                    "tenKH": "Lê Phi Hùng",
+                    "sodt": "0123456789",
+                    "diachi": "Quận 9"
+                }
+            ]
+        }
+    },
+    {
+        "email": "nuocHaNoi@gmail.com",
+        "matKhau": "hanoi123",
+        "loaiTK": 2,
+        "sodu": 0,
+        "maDN": 5,
+        "doanhnghiep": {
+            "tenDN": "Công ty cung cấp nước Hà Nội",
+            "loaiDN": 2,
+            "sodt": "0883820382",
+            "diachiDN": "quận Đống Đa",
+            "url": "images/logo-cnhanoi.png",
+            "dsKhachHang": [
+                {
+                    "maKH": "4000005",
+                    "tenKH": "Trần Anh Tuấn",
+                    "sodt": "0852968526",
+                    "diachi": "quận Đống Đa"
+                }
+            ]
+        }
+    },
+    {
+        "email": "fpt@gmail.com",
+        "matKhau": "fpt123",
+        "loaiTK": 2,
+        "sodu": 299300,
+        "maDN": 6,
+        "doanhnghiep": {
+            "tenDN": "Công ty FPT thành phố Hồ Chí Minh",
+            "loaiDN": 3,
+            "sodt": "0583858385",
+            "diachiDN": "quận Bình Thạnh",
+            "url": "images/logo-fpt.png",
+            "dsKhachHang": [
+                {
+                    "maKH": "4000001",
+                    "tenKH": "Lê Anh Tú",
+                    "sodt": "0123456789",
+                    "diachi": "Quận 9"
+                },
+                {
+                    "maKH": "4000002",
+                    "tenKH": "Lê Tuấn Anh",
+                    "sodt": "0124657893",
+                    "diachi": "Quận 9"
+                },
+                {
+                    "maKH": "4000003",
+                    "tenKH": "Lê Anh Hùng",
+                    "sodt": "0852963741",
+                    "diachi": "Quận 9"
+                },
+                {
+                    "maKH": "4000004",
+                    "tenKH": "Lê Phi Hùng",
+                    "sodt": "0123456789",
+                    "diachi": "Quận 9"
+                }
+            ]
+        }
+    },
+    {
+        "email": "sctv@gmail.com",
+        "matKhau": "sctv123",
+        "loaiTK": 2,
+        "sodu": 299300,
+        "maDN": 7,
+        "doanhnghiep": {
+            "tenDN": "Công ty SCTV thành phố Hồ Chí Minh",
+            "loaiDN": 3,
+            "sodt": "09856325632",
+            "diachiDN": "quận Bình Thạnh",
+            "url": "images/logo-sctv.png",
+            "dsKhachHang": [
+                {
+                    "maKH": "4000006",
+                    "tenKH": "Trần Tuấn Nam",
+                    "sodt": "0123456600",
+                    "diachi": "quận Bình Thạnh"
+                },
+                {
+                    "maKH": "4000007",
+                    "tenKH": "Trần Tuấn Việt",
+                    "sodt": "0124657602",
+                    "diachi": "quận Bình Thạnh"
+                }
+            ]
+        }
+    },
+    {
+        "email": "vnpt@gmail.com",
+        "matKhau": "vnpt123",
+        "loaiTK": 2,
+        "sodu": 299300,
+        "maDN": 8,
+        "doanhnghiep": {
+            "tenDN": "Công ty VNPT thành phố Hồ Chí Minh",
+            "loaiDN": 3,
+            "sodt": "0852369741",
+            "diachiDN": "quận Gò Vấp",
+            "url": "images/logo-sctv.png",
+            "dsKhachHang": [
+                {
+                    "maKH": "4000008",
+                    "tenKH": "Trần Tuấn Vũ",
+                    "sodt": "0124657615",
+                    "diachi": "quận Gò Vấp"
+                }
+            ]
+        }
+    }
+]

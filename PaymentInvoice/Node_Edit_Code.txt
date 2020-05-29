@@ -1,0 +1,119 @@
+/** ĐÃ CẬP NHẬT
+==> req.query.id này là của cái nào?
+
+-- npm i passport passport-local express-session connect-flash --save
+
+-- sửa lại app.get('/') ==> thay null bằng req
+
+-- thêm folder configure -> passport.js
+
+-- thêm function kiemtraTaiKhoanLogin(req, username, password, done)
+
+-- sửa lại content-body-right.ejs
+
+-- sửa lại headerBody.ejs
+
+-- trong app.js sửa lại các hàm gọi function thay 'yes' thành 'req'
+
+-- trong templet_function.js sử lại:
+	+ function homepage --> user: req.user và message: req.flash('loginMessage')
+	+ function thanhtoanPage --> user: req.user và message: req.flash('loginMessage')
+
+*************************************************/
+
+===> CẬP NHẬT MỚI -> Đã update trong verson 2.1
+-- app.post('/pay',isLoggedIn, (req, res) {}) và app.get('/success',isLoggedIn, (req, res) {}) => sau này sửa 'yes' thành 'req' ở function Homepage.
+
+-- trong templet_function.js thêm  => khi render đến trangchu.ejs :
+	+ function homepage --> alert: req.flash('alert')
+	+ function thanhtoanPage --> alert: req.flash('alert')
+
+-- trangchu.ejs  --> thì thềm và điều kiện thông báo|
+
+/***************************************************/
+
+===> CẬP NHẬT MỚI
+--> NOTE: sửa lại loại hóa đơn kiểu int  --> coi xem sửa lại trong templet_function.js ở chọn loại xuất ra màn hình function thanhtoanPage(loai, nameCty, url, name, icon, req, res)
+		/**
+    		 * loaiHD: 1 -> Hóa đơn tiền điện
+    		 * loaiHD: 2 -> Hóa đơn tiền nước
+    		 * loaiHD: 3 -> Hóa đơn tiền internet
+    		 */
+
+--> thệm CSDL trong folder DynamoDB
+--> sửa file handle_function.js thành TaiKhoan_Control.js => thêm xử lý đăng ký
+--> sửa lại code function kiemtraTaiKhoanLogin(req, username, password, done)
+--> Sửa lại headerBody.ejs  => Chào: <%= user.hoivien.tenHV %>  (coi COPY vô)
+--> Sửa lại content-body-right => <%= user.sodu %> (coi COPY vô)
+--> thêm folder tableLichNhac, tableLichSuGiaoDich trong DynamoDB
+--> edit sửa lại form_datlichnhac.ejs
+--> trong templet_function.js ở function thanhtoanPage thì sửa ====> body = ejs.render(fs.readFileSync('./views/form_datlichnhac.ejs','utf-8'), {user: req.user}, {vars: ['user']});
+--> cài đặt require('moment') ===> trong templet_function thì đặt const moment = require('moment');
+--> thêm DatLichNhac_Control.js
+
+==> CẬP Nhật MỚI 19/10/2019
+--> Loại trong thanhtoanPage đổi thành 1 2 3,
+--> Dữ liệu HoaDon.js "giadien" thành "giatien"
+--> Chức năng lịch sử, phần modal, =lsgd.hoadon.khachhang.tenKH giống mà không ra được tên KH
+--> Đặt lịch nhắc sau khi t đổi loaiHD thành 1 2 3 thì nó không hoạt động nữa.
+
+
+/ *************************************************/
+=====> CẬP NHẬT SEND EMAIL
+--> npm i nodemailer nodemailer-express-handlebars --save
+--> cập nhật trong DatLichNhac_Control.js
+--> thêm trang infor_email.ejs
+--> sửa trang templet_function.js ở function thanhtoanPage chỉnh sửa và thêm khi render đến trang đặt lịch nhắc ==> body = ejs.render(fs.readFileSync('./views/form_datlichnhac.ejs','utf-8'),{user: req.user, nowDate: date, nowTime: time, loai, nameCty},{vars: ['user','nowDate','nowTime','loai','nameCty']});
+--> copy lại form_datlichnhac.ejs
+--> npm i uuid --save
+--> xóa 2 folder trước và COPY folder tableLichNhac và tableTaiKhoan
+--> xóa chạy lại table TaiKhoan và LichNhac
+
+==>Cập nhật ngày 25/10/2019
+
+--> gôm 3 trang Tien lại thành trang dscongty.ejs => sửa trong taikhoan_control.js
+--> tao paypal.js trong configure để gôm code;
+--> tạo AreaAdmin các trang
+--> đkdn mã DN tự sinh;
+--> localhost:9000/admin qua trang admin
+--> chưa có xét tk mk, bấm đăng nhập rồi vào trang admin.
+m xử lý khi qua link /admin thì nếu có session đăng nhập thì kết thúc nó rồi đăng nhập lại bằng admin.
+--> xong form dkdn rồi.
+--> folder controller trong AreaAdmin để control ở admin.
+--> các app.get(/admin) để ở cuối của app.js
+
+==> DUY Cập nhật ngày 25/10/2019
+---> ở app.js phần app.post('/savelichnhac', (req, res) ==> sửa lại gọi hàm: datlichControl.kiemtraDatLich(req, res);
+---> TaiKhoan.json sửa email: 'thanhduy@gmail.com' --> 'zzzthanhduyzzz@gmail.com' chạy lại bảng tài khoản
+---> copy lại file DatLichNhac_Control.js
+---> npm i multer xlsx --save
+---> copy lại file app.js phần DOANH NGHIỆP và ADMIN (đăng ký doanh nghiệp)
+---> trong folder configure thêm uploadFile.js
+---> copy lại file TaiKhoan_Control.js phần DOANH NGHIỆP và ADMIN	(Note: nhớ copy lại module.exports)
+---> ở file TaiKhoan_Control.js có chỉnh sửa function kiemtraEmail() và function themTaiKhoanDangKy() ==> (Node: copy lại);
+---> copy lại file dkdn.ejs
+
+// **********************************************
+===> Cập nhật ngày 26/10/2019
+---> ở DatLichNhac_Control.js sửa function themLichNhac(req, res) chổ if (ghichu === '') mà else sửa "maLich": uuid4()
+----> ở TaiKhoan_Control.js thêm dòng const uuid4 = require('uuid/v4'); và function themTaiKhoanDangKy(req, res, loaiTK) sửa khi thêm hội viên thì "maHV": uuid4()
+
+==> Cập nhật ngày  27/10
+---> sửa lại thêm lịch nhắc DatLichNhac_Control.js (nếu m không có động gì trong đây thì copy lại luôn )
+---> trong trang templet_function.js copy cái này thay vào body = ejs.render(fs.readFileSync('./views/form_datlichnhac.ejs','utf-8'),{user: req.user, nowDate: date, nowTime: time, loaiHD: loai, maDN: nameCty, resultUpload: null},{vars: ['user','nowDate','nowTime','loaiHD','maDN','resultUpload']});
+---> chỉnh sửa trang app.js bỏ app.post('/savelichnhac', (req, res) và copy lại cái mới thêm app.get('/checkMaKH', (req, res)
+---> xem function luuLichSu sửa maGiaoDich = uuid4() cái này nên tham khảo bên tao DatLichNhac_Control.js function luuLichSu()
+---> copy lại folder lịch nhắc và file LichNhac.json
+---> sửa file infor_email.ejs thành email_info.ejs copy lại nôi dung
+---> copy lại form_datlichnhac.ejs
+---> file app.js thêm function isLoggedDoanhNgiep(req, res, next) dưới function isLoggedIn(req, res, next)
+---> file app.js phần Doanh Nghiệp sửa '/capnhatkhachhang' của isLoggedIn thành isLoggedDoanhNgiep
+---> sửa '/capnhathoadon' của isLoggedIn thành isLoggedDoanhNgiep
+---> trong folder DynamoDB thêm creTbale.js và loadTable.js gồm lại các bảng
+
+// **********************************************
+===> Cập nhật ngày 28/10/2019
+---> bắt lỗi ngày hẹn và giờ hẹn (Note: copy lại)
+---> trong app.js sửa lại taikhoanControl.uploadFileKhachHangOfDoanhNghiep(req, res, name, icon) thành => taikhoanControl.uploadFileOfDoanhNghiep(req, res, name, icon,loaiFile);
+---> trong TaiKhoan_Control.js cũng sửa lại tên function uploadFileKhachHangOfDoanhNghiep(req, res, name, icon) thành => uploadFileOfDoanhNghiep(req, res, name, icon,loaiFile);
+---> Sau đó cập nhật lại nôi dung trong function (Note: copy lại cái function này uploadFileOfDoanhNghiep và UPDATE lại module.exports)

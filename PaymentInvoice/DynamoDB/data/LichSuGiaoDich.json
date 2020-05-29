@@ -1,0 +1,52 @@
+[
+    {
+        "maGiaoDich": "20000000",
+        "ngayGiaoDich": "2019-09-28",
+        "thoigianGD": "09:16:12",
+        "loaiGiaoDich": 1,
+        "phuongthucnap": "Paypal",
+        "tiennap": 300000,
+        "maHV": "1000001",
+        "hoivien": {
+            "tenHV": "Thanh Duy",
+            "sodt": "012456789",
+            "diachi": "320 Quang Trung, quận Gò Vấp"
+        }
+    },
+    {
+        "maGiaoDich": "20000001",
+        "ngayGiaoDich": "2019-09-28",
+        "thoigianGD": "09:20:12",
+        "loaiGiaoDich": 0,
+        "phiGiaoDich": 1000,
+        "soTien": 300300,
+        "maDN": 1,
+        "hoadon": {
+            "maHD": "DIEN_0000001",
+            "loaiHD": 1,
+            "thue": 0.1,
+            "chisocu": 120,
+            "chisomoi": 330,
+            "giatien": 1300,
+            "doanhnghiep": {
+                "tenDN": "Công ty điện lực thành phố Hồ Chí Minh",
+                "loaiDN": 1,
+                "sodt": "0383838383",
+                "diachiDN": "quận Bình Thạnh",
+                "url": "images/logo-dientphcm.png"
+            },
+            "khachhang": {
+                "maKH": "4000001",
+                "tenKH": "Lê Anh Tú",
+                "sodt": "0123456789",
+                "diachi": "Quận 9"
+            }
+        },
+        "maHV": "1000001",
+        "hoivien": {
+            "tenHV": "Thanh Duy",
+            "sodt": "012456789",
+            "diachi": "320 Quang Trung, quận Gò Vấp"
+        }
+    }
+]

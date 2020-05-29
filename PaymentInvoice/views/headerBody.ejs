@@ -1,0 +1,222 @@
+<script type="text/javascript">
+    function ktdkHoTen() {
+        var hoten = $("#signupTenHV").val();
+        if (hoten == "") {
+            $("#tenhvError").html("* Phải nhập họ tên");
+            return false;
+        }
+        $("#tenhvError").html("&nbsp;");
+        return true;
+    }
+
+    function ktdkEmail() {
+        var email = $("#signupEmail").val();
+        if (email == "") {
+            $("#emailError").html("* Phải nhập email");
+            return false;
+        }
+        else {
+            var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!re.test(email)) {
+                $("#emailError").html("Email không hợp lệ");
+                return false;
+            }
+            $("#emailError").html("&nbsp;");
+        }
+        return true;
+    }
+
+    function ktdkPassword() {
+        var password1 = $("#signupPass").val();
+        if (password1 == "") {
+            $("#matKhauError").html("* Phải nhập mật khẩu");
+            return false;
+        }
+        else {
+            var re = /[a-zA-Z0-9]{6,}/;
+            if (!re.test(password1)) {
+                $("#matKhauError").html("* Mật khẩu phải từ 6 - 255 ký tự");
+                return false;
+            }
+            $("#matKhauError").html("&nbsp;");
+        }
+        return true;
+    }
+
+    function ktdkPass2() {
+        if ($("#signupConfirmPass").val() == $("#signupPass").val()) {
+            $("#confirmPassError").html("&nbsp;");
+            return true;
+        }
+        $("#confirmPassError").html("Mật khẩu không khớp");
+        return false;
+    }
+
+    function ktdkSodt() {
+        var sodt = $("#signupSodt").val();
+        if (sodt == "") {
+            $("#sodtError").html("* Phải nhập số điện thoại");
+            return false;
+        }
+        else {
+            var re = /^0[0-9]{9}/;
+            if (!re.test(sodt)) {
+                $("#sodtError").html("Số điện thoại phải đủ 10 số và bắt đầu từ 0");
+                return false;
+            }
+            $("#sodtError").html("&nbsp;");
+        }
+        return true;
+    }
+
+    function ktdkDiaChi() {
+        var diachi = $("#signupDiaChi").val();
+        if (diachi == "") {
+            $("#diachiError").html("* Phải nhập địa chỉ");
+            return false;
+        }
+        return true;
+    }
+
+    function submitDangKy() {
+        if (ktdkHoTen() && ktdkEmail() && ktdkPassword() && ktdkPass2() && ktdkSodt() && ktdkDiaChi())
+            return true;
+        swal({
+            title: "Thông Báo",
+            text: "Thông tin nhập chưa đủ hoặc không chính xác.",
+        });
+        return false;
+    }
+</script>
+
+<% if (user == null) { %>
+<div class="col-md-4 col-sm-4 col col-xs-4 title-left">
+    <a href="#" title=""><i class="glyphicon glyphicon-home"></i>Trang chủ</a>
+</div>
+<div class="col-md-4 col-sm-4 col col-xs-4 title-center">
+    <a title=""><i class="<%=icon%>"></i></a>
+    <br>
+    <a href="#" title=""><strong><%=name%></strong></a>
+</div>
+<div class="col-md-4 col-sm-4 col col-xs-4 title-right">
+    <a href="#" title=""><i class="glyphicon glyphicon-user"></i></a>
+    <a href="#" title="" data-toggle="modal" data-target="#modalRegisterForm">Đăng Ký</a>
+    <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Đăng Ký</h4>
+                </div>
+                <div class="modal-body" style="height:580px">
+                    <div class="col-md-12">
+                        <form class="form-horizontal" action="/signup" method="POST" onsubmit="return submitDangKy()">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" id="signupTenHV" name="tenHV"
+                                        onblur="ktdkHoTen()" placeholder="Họ và Tên" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12" style="text-align: left;">
+                                    <span style="color: red;" id="tenhvError"> &nbsp; </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" id="signupEmail" name="email"
+                                        onblur="ktdkEmail()" placeholder="Email" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12" style="text-align: left;">
+                                    <span style="color: red;" id="emailError"> &nbsp; </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="password" class="form-control" id="signupPass" name="matKhau"
+                                        onblur="ktdkPassword()" placeholder="Mật Khẩu" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12" style="text-align: left;">
+                                    <span style="color: red;" id="matKhauError"> &nbsp; </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="password" class="form-control" id="signupConfirmPass" name="confirmMK"
+                                        onblur="ktdkPass2()" placeholder="Nhập Lại Mật Khẩu" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12" style="text-align: left;">
+                                    <span style="color: red;" id="confirmPassError"> &nbsp; </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" id="signupSodt" name="sodt"
+                                        onblur="ktdkSodt()" placeholder="Số Điện Thoại" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12" style="text-align: left;">
+                                    <span style="color: red;" id="sodtError"> &nbsp; </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" id="signupDiaChi" name="diachi"
+                                        onblur="ktdkDiaChi()" placeholder="Địa Chỉ" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12" style="text-align: left;">
+                                    <span style="color: red;" id="diachiError"> &nbsp; </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <input class="btn btn-default" type="submit" style="width: 180px" value="Đăng Ký" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="reset" class="btn btn-default" style="width: 180px" value="Hủy"
+                                        data-dismiss="modal" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } else { %>
+<!-- Tên người dùng thay đổi theo tài khoản -->
+<div class="col-md-4 col-sm-4 col col-xs-4 title-left">
+    <a href="#" title=""><i class="glyphicon glyphicon-home"></i></a>
+    <%if(user.loaiTK == 1){%>
+    <a href="#" title="">Người dùng</a>
+    <%}else{%>
+    <a href="#" title="">Doanh nghiệp</a>
+    <%}%>
+</div>
+<div class="col-md-4 col-sm-4 col col-xs-4 title-center">
+    <a title=""><i class="<%=icon%>"></i></a>
+    <br>
+    <a href="#" title=""><strong><%= name %></strong></a>
+</div>
+<div class="col-md-4 col-sm-4 col col-xs-4 title-right">
+    <a href="#" title=""><i class="glyphicon glyphicon-user"></i></a>
+    <%if(user.loaiTK == 1){%>
+    <a href="#" title="">Chào: <strong><%= user.hoivien.tenHV %></strong></a>
+    <%}else{%>
+    <a href="#">Chào:<br><strong><%= user.doanhnghiep.tenDN%></strong></a>
+    <%}%>
+    
+</div>
+<% } %>

@@ -1,0 +1,229 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+    function ktdkHoTen() {
+        var hoten = $("#signupTenDN").val();
+        if (hoten == "") {
+            $("#tendnError").html("Phải nhập họ tên");
+            return false;
+        }
+        $("#tendnError").html("&nbsp;");
+        return true;
+    }
+
+    function ktdkEmail() {
+        var email = $("#signupEmail").val();
+        if (email == "") {
+            $("#emailError").html("Phải nhập email");
+            return false;
+        }
+        else {
+            var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!re.test(email)) {
+                $("#emailError").html("Email không hợp lệ");
+                return false;
+            }
+            $("#emailError").html("&nbsp;");
+        }
+        return true;
+    }
+
+    function ktdkPassword() {
+        var password1 = $("#signupPass").val();
+        if (password1 == "") {
+            $("#matKhauError").html("Phải nhập mật khẩu");
+            return false;
+        }
+        else {
+            var re = /[a-zA-Z0-9]{6,}/;
+            if (!re.test(password1)) {
+                $("#matKhauError").html("Mật khẩu phải từ 6 - 255 ký tự");
+                return false;
+            }
+            $("#matKhauError").html("&nbsp;");
+        }
+        return true;
+    }
+
+    function ktdkPass2() {
+        if ($("#signupConfirmPass").val() == $("#signupPass").val()) {
+            $("#confirmPassError").html("&nbsp;");
+            return true;
+        }
+        $("#confirmPassError").html("Mật khẩu không khớp");
+        return false;
+    }
+
+    function ktdkSodt() {
+        var sodt = $("#signupSodt").val();
+        if (sodt == "") {
+            $("#sodtError").html("Phải nhập số điện thoại");
+            return false;
+        }
+        else {
+            var re = /^0[0-9]{9}/;
+            if (!re.test(sodt)) {
+                $("#sodtError").html("Số điện thoại phải đủ 10 số và bắt đầu từ 0");
+                return false;
+            }
+            $("#sodtError").html("&nbsp;");
+        }
+        return true;
+    }
+
+    function ktdkDiaChi() {
+        var diachi = $("#signupDiaChi").val();
+        if (diachi == "") {
+            $("#diachiError").html("Phải nhập địa chỉ");
+            return false;
+        }
+        return true;
+    }
+
+    function submitDangKy() {
+        var urlLogo = $("#signupURL").val();
+        if (urlLogo == "") {
+            swal({
+                title: "Thông Báo",
+                text: "Chưa chọn logo của doanh nghiệp.",
+            });
+            return false;
+        }
+        if (ktdkHoTen() && ktdkEmail() && ktdkPassword() && ktdkPass2() && ktdkSodt() && ktdkDiaChi())
+            return true;
+
+            swal({
+                title: "Thông Báo",
+                text: "Thông tin nhập chưa đủ hoặc không chỉnh xác.",
+            });
+        return false;
+    }
+</script>
+<% if (resultUpload === "error") { %>
+<script>
+    window.addEventListener('load', function () {
+        $("#signupTenDN").val('<%= item.tenDN %>');
+        $("#signupEmail").val('<%= item.email %>');
+        $("#signupPass").val('<%= item.matKhau %>');
+        $("#signupConfirmPass").val('<%= item.confirmMK %>');
+        $("#signupSodt").val('<%= item.sodt %>');
+        $("#signupDiaChi").val('<%= item.diachi %>');
+        $("#signupLoaiDN").val('<%= item.loaiDN %>');
+        swal({
+                title: "Thông Báo",
+                text: "Phải chọn file ảnh",
+            });
+    });
+</script>
+<% } else if (resultUpload === "hasEmail") { %>
+<script>
+    window.addEventListener('load', function () {
+        $("#signupTenDN").val('<%= item.tenDN %>');
+        $("#signupEmail").val('<%= item.email %>');
+        $("#signupPass").val('<%= item.matKhau %>');
+        $("#signupConfirmPass").val('<%= item.confirmMK %>');
+        $("#signupSodt").val('<%= item.sodt %>');
+        $("#signupDiaChi").val('<%= item.diachi %>');
+        $("#signupLoaiDN").val('<%= item.loaiDN %>');
+        swal({
+                title: "Thông Báo",
+                text: "Email này đã có người sử dụng",
+            });
+    });
+</script>
+<% } else if (resultUpload === "succeed") { %>
+<script>
+    window.addEventListener('load', function () {
+        swal({
+                title: "Thông Báo",
+                text: "Đăng ký doanh nghiệp thành công",
+            });
+    });
+</script>
+<% } %>
+<form class="form-horizontal" action="/registerDN" method="POST" id="form-dkdn" enctype="multipart/form-data"
+    onsubmit="return submitDangKy()">
+    <h2>Đăng Ký Doanh Nghiệp</h2>
+    <div class="form-group">
+        <div class="col-md-12">
+            <input type="text" class="form-control" id="signupTenDN" name="tenDN" placeholder="Tên Doanh Nghiệp"
+                onblur="ktdkHoTen()" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <span style="color: red;" id="tendnError"> &nbsp; </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <input type="text" class="form-control" id="signupEmail" name="email" placeholder="Email"
+                onblur="ktdkEmail()" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <span style="color: red;" id="emailError"> &nbsp; </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6">
+            <input type="password" class="form-control" id="signupPass" name="matKhau" placeholder="Mật Khẩu"
+                onblur="ktdkPassword()" />
+        </div>
+        <div class="col-md-6">
+            <input type="password" class="form-control" id="signupConfirmPass" name="confirmMK" onblur="ktdkPass2()"
+                placeholder="Nhập Lại Mật Khẩu" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6">
+            <span style="color: red;" id="matKhauError"> &nbsp; </span>
+        </div>
+        <div class="col-md-6">
+            <span style="color: red;" id="confirmPassError"> &nbsp; </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <input type="text" class="form-control" id="signupSodt" name="sodt" placeholder="Số Điện Thoại"
+                onblur="ktdkSodt()" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <span style="color: red;" id="sodtError"> &nbsp; </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <input type="text" class="form-control" id="signupDiaChi" name="diachiDN" placeholder="Địa Chỉ"
+                onblur="ktdkDiaChi()" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <span style="color: red;" id="diachiError"> &nbsp; </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <select id="signupLoaiDN" name="loaiDN" class="form-control">
+                <option value="1">Điện</option>
+                <option value="2">Nước</option>
+                <option value="3">Internet</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group"> &nbsp; </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <input type="file" class="form-control" id="signupURL" name="urllogo" placeholder="URL Logo" />
+        </div>
+    </div>
+    <div class="form-group"> &nbsp; </div>
+    <div class="form-group">
+        <div class="col-sm-12">
+            <input class="btn btn-basic" type="submit" style="width: 180px" value="Đăng Ký" />
+        </div>
+    </div>
+</form>

@@ -1,0 +1,177 @@
+<div class="content-center-div">
+    <div id="custom-search-input">
+        <div class="input-group col-md-12">
+            <form action="/lichsu">
+                <input name="search" class="search-query form-control" type="month"
+                    style="width: 50%;margin-top: 20px;margin-left: 150px;margin-bottom:20px" />
+                <span class="action-search">
+                    <button class="btn-search" type="submit" style="right: 135px;top: 28px;">
+                        <i class="fa fa-search" style="font-size:18px!important;"></i>
+                    </button>
+                </span>
+            </form>
+            <div class="scrollable">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Ngày Giờ</th>
+                            <th>Loại giao dịch</th>
+                            <th>Số tiền</th>
+                            <th>...</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% object.data.Items.forEach((lsgd)=>{%>
+                        <tr>
+                            <td><%=lsgd.thoigianGD%> <%=lsgd.ngayGiaoDich%></td>
+                            <%if(lsgd.loaiGiaoDich == 1){%>
+                            <td>Nạp Tiền</td>
+                            <td>+ <%=lsgd.tiennap%> VNĐ</td>
+                            <td><a href="" class="detail" data-date="<%=lsgd.thoigianGD%> <%=lsgd.ngayGiaoDich%>"
+                                    data-loaigd="Nạp Tiền" data-ptnap="<%=lsgd.phuongthucnap%>"
+                                    data-makh="<%=lsgd.maHV%>" data-tenkh="<%=lsgd.hoivien.tenHV%>"
+                                    data-sodt="<%=lsgd.hoivien.sodt%>" data-diachi="<%=lsgd.hoivien.diachi%>"
+                                    data-sotien="<%=lsgd.tiennap%> VNĐ" data-toggle="modal" data-target="#myModalLS">Chi
+                                    tiết</a></td>
+                            <%}else{%>
+                            <td>Hóa Đơn Thanh Toán</td>
+                            <td>- <%=lsgd.soTien%> VNĐ</td>
+                            <td><a href="" class="detail" data-date="<%=lsgd.thoigianGD%> <%=lsgd.ngayGiaoDich%>"
+                                    data-loaigd="Hóa Đơn Thanh Toán" data-phigd="<%=lsgd.phiGiaoDich%> VNĐ"
+                                    data-mahd="<%=lsgd.hoadon.maHD%>" data-tendn="<%=lsgd.hoadon.doanhnghiep.tenDN%>"
+                                    data-diachidn="<%=lsgd.hoadon.doanhnghiep.diachiDN%>"
+                                    data-makh="<%=lsgd.hoadon.khachhang.maKH%>"
+                                    data-tenkh="<%=lsgd.hoadon.khachhang.tenKH%>"
+                                    data-sodt="<%=lsgd.hoadon.khachhang.sodt%>" data-diachi="<%=lsgd.hoivien.diachi%>"
+                                    data-sotien="<%=lsgd.soTien%> VNĐ" data-toggle="modal"
+                                    data-target="#myModalLSHD">Chi
+                                    tiết</a></td>
+                            <%}%>
+                        </tr>
+                        <%})%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="modal fade" id="myModalLS" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Chi Tiết Giao Dịch Nạp Tiền</h4>
+                </div>
+                <div class="modal-body" style="padding:0">
+                    <div class="col-md-9" style="left:75px">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>Ngày Giờ :</td>
+                                    <td><strong id="date"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Loại Giao Dịch :</td>
+                                    <td><strong id="loaigd"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Phương Thức Nạp</td>
+                                    <td><strong id="ptnap"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Mã Hội Viên</td>
+                                    <td><strong id="makh"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Tên Hội Viên</td>
+                                    <td><strong id="tenkh"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Số Điện Thoại</td>
+                                    <td><strong id="sodt"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Địa Chỉ</td>
+                                    <td><strong id="diachi"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Số Tiền Nạp</td>
+                                    <td><strong id="sotien"></strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="modal fade" id="myModalLSHD" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Chi Tiết Giao Dịch Thanh Toán Hóa Đơn</h4>
+                </div>
+                <div class="modal-body" style="padding:0">
+                    <div class="col-md-12">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>Ngày Giờ</td>
+                                    <td><strong id="date"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Loại Giao Dịch</td>
+                                    <td><strong id="loaigd"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Phí Giao Dịch</td>
+                                    <td><strong id="phigd"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Mã Hóa Đơn</td>
+                                    <td><strong id="mahd"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Tên Doanh Nghiệp</td>
+                                    <td><strong id="tendn"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Địa Chỉ Doanh Nghiệp</td>
+                                    <td><strong id="diachidn"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Mã Khách Hàng</td>
+                                    <td><strong id="makh"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Tên Khách Hàng</td>
+                                    <td><strong id="tenkh"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Số Điện Thoại</td>
+                                    <td><strong id="sodt"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Địa Chỉ</td>
+                                    <td><strong id="diachi"></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Số Tiền Thanh Toán</td>
+                                    <td><strong id="sotien"></strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
