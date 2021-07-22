@@ -25,6 +25,6 @@
     "passport-local": "^1.0.0",
     "paypal-rest-sdk": "^1.8.1",
     "uuid": "^3.3.3",
-    "xlsx": "^0.15.1"
+    "xlsx": "^0.17.0"
   }
 }
